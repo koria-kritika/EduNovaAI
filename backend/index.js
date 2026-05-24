@@ -23,7 +23,7 @@ const app = express()
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors({
-  origin: ["http://localhost:5173", "https://your-app.vercel.app"],
+  origin: ["https://edu-nova-ai-gamma.vercel.app", "http://localhost:5173"],
   credentials: true
 }))
 
@@ -46,7 +46,7 @@ const server = http.createServer(app)
 
 export const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "https://your-app.vercel.app"],
+    origin: ["https://edu-nova-ai-gamma.vercel.app", "http://localhost:5173"],
     credentials: true
   }
 })
