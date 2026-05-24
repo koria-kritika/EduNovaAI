@@ -366,7 +366,7 @@ export default function Classroom({ courseId }) {
                       onClick={() => fileRef.current.click()}
                       title={`Attach file (${activeChannel})`}
                       style={{
-                        width: 34, height: 34, borderRadius: '50%', border: 'none', cursor: 'pointer',
+                        width: 34, height: 34, borderRadius: '50%', cursor: 'pointer',
                         background: file ? 'rgba(6,182,212,0.2)' : 'rgba(59,130,246,0.1)',
                         border: file ? '1px solid rgba(6,182,212,0.4)' : '1px solid rgba(59,130,246,0.2)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
