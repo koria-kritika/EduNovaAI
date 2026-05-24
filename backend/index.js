@@ -13,7 +13,7 @@ import progressRoute from "./route/progressRoute.js"
 import classroomRouter from "./route/classroomRoute.js"
 import http from "http"
 import { Server } from "socket.io"
-import { initIO } from './socket.js'   // ← add this
+import { initIO } from './socket.js'   
 
 dotenv.config()
 
