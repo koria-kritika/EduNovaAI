@@ -123,7 +123,7 @@ function EditLecture() {
       <div className='w-full max-w-xl rounded-2xl p-7 space-y-6 relative z-10'
         style={{ background: '#111827', border: '1px solid rgba(59,130,246,0.2)', boxShadow: '0 4px 40px rgba(0,0,0,0.5)' }}>
 
-        //header
+        
         <div className='flex items-center gap-4'>
           <button className='w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300'
             style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.3)' }}
@@ -145,7 +145,7 @@ function EditLecture() {
         </div>
 
         <div className='w-full h-[1px]' style={{ background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.25), transparent)' }} />
-        //remove button
+        
         <button className='flex items-center gap-2 px-4 py-2.5 rounded-xl text-base font-semibold transition-all duration-200'
           style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.3)', color: '#F87171' }}
           onMouseEnter={e => e.currentTarget.style.background = 'rgba(239,68,68,0.18)'}
