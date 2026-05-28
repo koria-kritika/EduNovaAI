@@ -8,7 +8,7 @@ import { setLectureData } from '../../redux/lectureSlice';
 import { toast } from 'react-toastify';
 import { ClipLoader } from 'react-spinners';
 
-const MAX_INPUT_MB = 300  
+const MAX_INPUT_MB = 80;
 
 function EditLecture() {
   const { courseId, lectureId } = useParams()
