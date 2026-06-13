@@ -1,122 +1,3 @@
-// // import React from 'react'
-// // import { useEffect } from 'react'
-// // import { useState } from 'react'
-// // import { useSelector } from 'react-redux'
-// // import Card from './Card'
-
-// // function CardPage() {
-// //     const {courseData} = useSelector(state=>state.course)
-// //     const [popularCourses,setPopularCourses] = useState([])
-
-// //     useEffect(()=>{
-// //      setPopularCourses(courseData?.slice(0,6));
-// //     },[courseData])
-// //   return (
-// //     <div className='relative flex items-center justify-center flex-col'>
-// //         <h1 className='md:text-[45px] text-[30px] font-semibold text-center mt-[30px] px-[20px]'>Our Popular Courses</h1>
-// //         <span className='lg:w-[50%] md:w-[80%] text-[15px] text-center mt-[30px] mb-[30px] px-[20px]'>Explore top-rated courses designed to boost your skills, enhance careers, and unlock opportunities in tech, AI, business, and beyond.</span>
-// //         <div className='w-[100%]  flex items-center justify-center flex-wrap gap-[50px] lg:p-[50px] md:p-[30px] p-[10px] mb-[40px]'>
-// //          {
-// //             popularCourses?.map((course,index)=>(
-// //                 <Card key={index} thumbnail={course.thumbnail} title={course.title} category={course.category} price={course.price} id={course._id} reviews={course.reviews}/>
-// //             ))
-// //          }
-// //         </div>
-      
-// //     </div>
-// //   )
-// // }
-
-// // export default CardPage
-
-// import React from 'react'
-// import { useEffect } from 'react'
-// import { useState } from 'react'
-// import { useSelector } from 'react-redux'
-// import Card from './Card'
-
-// function CardPage() {
-//     const {courseData} = useSelector(state=>state.course)
-//     const [popularCourses,setPopularCourses] = useState([])
-
-//     useEffect(()=>{
-//      setPopularCourses(courseData?.slice(0,6));
-//     },[courseData])
-
-//   return (
-//     <div className='relative flex items-center justify-center flex-col bg-[#0F172A] overflow-hidden'>
-
-//       {/* background glow orbs */}
-//       <div className='absolute top-[0px] right-[5%] w-[450px] h-[450px] bg-[#8B5CF6] opacity-[0.07] rounded-full blur-[140px] pointer-events-none' />
-//       <div className='absolute bottom-[0px] left-[5%] w-[450px] h-[450px] bg-[#3B82F6] opacity-[0.07] rounded-full blur-[140px] pointer-events-none' />
-//       <div className='absolute top-[40%] left-[40%] w-[300px] h-[300px] bg-[#06B6D4] opacity-[0.04] rounded-full blur-[100px] pointer-events-none' />
-
-//       {/* section label */}
-//       <div className='flex items-center gap-3 mt-[50px]'>
-//         <div className='w-8 h-[2px] bg-gradient-to-r from-transparent to-[#8B5CF6]' />
-//         <span className='text-[#06B6D4] text-sm font-semibold tracking-widest uppercase'>
-//           Popular Courses
-//         </span>
-//         <div className='w-8 h-[2px] bg-gradient-to-l from-transparent to-[#3B82F6]' />
-//       </div>
-
-//       {/* heading */}
-//       <h1 className='md:text-[45px] text-[30px] font-semibold text-center mt-[16px] px-[20px] leading-tight'>
-//         <span className='text-[#E2E8F0]'>Our </span>
-//         <span className='bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent'>
-//           Popular Courses
-//         </span>
-//       </h1>
-
-//       {/* subtext */}
-//       <span className='lg:w-[50%] md:w-[80%] text-[15px] text-center mt-[20px] mb-[16px] px-[20px] text-[#94A3B8] leading-relaxed'>
-//         Explore top-rated courses designed to boost your skills, enhance careers, and unlock opportunities in tech, AI, business, and beyond.
-//       </span>
-
-//       {/* gradient divider */}
-//       <div className='w-[80px] h-[3px] rounded-full bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] mb-[50px]' />
-
-//       {/* cards grid */}
-//       <div className='w-[100%] flex items-center justify-center flex-wrap gap-[30px] lg:px-[80px] md:px-[40px] px-[20px] pb-[80px]'>
-//         {popularCourses?.map((course, index) => (
-//           <div
-//             key={index}
-//             className='relative group'
-//             style={{
-//               animation: `fadeSlideUp 0.5s ease forwards`,
-//               animationDelay: `${index * 0.1}s`,
-//               opacity: 0
-//             }}
-//           >
-//             {/* hover glow behind card */}
-//             <div className='absolute inset-0 rounded-2xl bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] opacity-0 group-hover:opacity-25 blur-[18px] transition-all duration-500 pointer-events-none' />
-//             <Card
-//               thumbnail={course.thumbnail}
-//               title={course.title}
-//               category={course.category}
-//               price={"₹" + course.price}
-//               id={course._id}
-//               reviews={course.reviews}
-//             />
-//           </div>
-//         ))}
-//       </div>
-
-//       {/* bottom fade */}
-//       <div className='absolute bottom-0 left-0 w-full h-[60px] bg-gradient-to-t from-[#0F172A] to-transparent pointer-events-none' />
-
-//       <style>{`
-//         @keyframes fadeSlideUp {
-//           from { opacity: 0; transform: translateY(30px); }
-//           to   { opacity: 1; transform: translateY(0); }
-//         }
-//       `}</style>
-//     </div>
-//   )
-// }
-
-// export default CardPage
-
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Card from './Card'
@@ -132,55 +13,74 @@ function CardPage() {
     }, [courseData])
 
     return (
-        <div className='relative flex items-center justify-center flex-col bg-[#0F172A] overflow-hidden'>
+        <div 
+            className='relative flex items-center justify-center flex-col overflow-hidden w-full'
+            style={{
+                /* Bright Fluid Mesh Background mixing Purple, Mint Green, and Peach exactly like your image */
+                background: 'radial-gradient(circle at 85% 15%, #FFEBE0 0%, transparent 40%), radial-gradient(circle at 15% 85%, #E8F5E9 0%, transparent 40%), radial-gradient(circle at 50% 50%, #F3E8FF 0%, #FFFFFF 100%)',
+            }}
+        >
+            {/* Background Soft Organic Floating Orbs for extra premium depth */}
+            <div className='absolute top-[10%] left-[5%] w-[120px] h-[120px] bg-gradient-to-tr from-[#6C5CE7]/10 to-[#4E5BF2]/10 rounded-full blur-xl pointer-events-none' />
+            <div className='absolute bottom-[15%] right-[2%] w-[160px] h-[160px] bg-gradient-to-tr from-[#4AD8B4]/15 to-[#E8F5E9]/10 rounded-full blur-2xl pointer-events-none' />
 
-            {/* background glow orbs */}
-            <div className='absolute top-[0px] right-[5%] w-[450px] h-[450px] bg-[#8B5CF6] opacity-[0.07] rounded-full blur-[140px] pointer-events-none' />
-            <div className='absolute bottom-[0px] left-[5%] w-[450px] h-[450px] bg-[#3B82F6] opacity-[0.07] rounded-full blur-[140px] pointer-events-none' />
-            <div className='absolute top-[40%] left-[40%] w-[300px] h-[300px] bg-[#06B6D4] opacity-[0.04] rounded-full blur-[100px] pointer-events-none' />
-
-            {/* section label */}
-            <div className='flex items-center gap-3 mt-[50px]'>
-                <div className='w-8 h-[2px] bg-gradient-to-r from-transparent to-[#8B5CF6]' />
-                <span className='text-[#06B6D4] text-sm font-semibold tracking-widest uppercase'>
+            {/* Section Label */}
+            <div className='flex items-center gap-3 mt-[70px]'>
+                <div className='w-8 h-[2px] bg-gradient-to-r from-transparent to-[#6C5CE7]' />
+                <span className='text-[#4E5BF2] text-xs font-bold tracking-widest uppercase'>
                     Popular Courses
                 </span>
-                <div className='w-8 h-[2px] bg-gradient-to-l from-transparent to-[#3B82F6]' />
+                <div className='w-8 h-[2px] bg-gradient-to-l from-transparent to-[#4AD8B4]' />
             </div>
 
-            {/* heading */}
-            <h1 className='md:text-[45px] text-[30px] font-semibold text-center mt-[16px] px-[20px] leading-tight'>
-                <span className='text-[#E2E8F0]'>Our </span>
-                <span className='bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent'>
+            {/* Heading with Clean Contrast */}
+            <h1 className='md:text-[42px] text-[32px] font-extrabold text-center mt-[12px] px-[20px] leading-tight text-[#0E1B4D]'>
+                Our{' '}
+                <span 
+                    style={{
+                        background: 'linear-gradient(90deg, #4E5BF2, #6C5CE7)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                    }}
+                >
                     Popular Courses
                 </span>
             </h1>
 
-            {/* subtext */}
-            <span className='lg:w-[50%] md:w-[80%] text-[15px] text-center mt-[20px] mb-[16px] px-[20px] text-[#94A3B8] leading-relaxed'>
+            {/* Subtext */}
+            <p className='lg:w-[50%] md:w-[75%] text-[15px] text-center mt-[16px] mb-[24px] px-[20px] text-[#5F6C85] font-medium leading-relaxed'>
                 Explore top-rated courses designed to boost your skills, enhance careers, and unlock opportunities in tech, AI, business, and beyond.
-            </span>
+            </p>
 
-            {/* gradient divider */}
-            <div className='w-[80px] h-[3px] rounded-full bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] mb-[50px]' />
+            {/* Pastel Soft Gradient Divider */}
+            <div 
+                className='w-[80px] h-[3.5px] rounded-full mb-[50px]' 
+                style={{
+                    background: 'linear-gradient(90deg, #6C5CE7 0%, #FED7AA 50%, #6E00F5 100%)',
+                    background: 'linear-gradient(90deg, #4E5BF2, #FF8A8A, #4AD8B4)'
+                }}
+            />
 
-            {/* cards grid */}
-            <div className='w-[100%] flex items-center justify-center flex-wrap gap-[30px] lg:px-[80px] md:px-[40px] px-[20px] pb-[80px]'>
+            {/* Cards Grid wrapper */}
+            <div className='w-[100%] flex items-center justify-center flex-wrap gap-[35px] lg:px-[80px] md:px-[40px] px-[20px] pb-[90px]'>
                 {popularCourses.length === 0 ? (
-                    <p className='text-[#94A3B8] text-sm'>No courses available yet.</p>
+                    <p className='text-[#5F6C85] font-medium text-sm bg-white/50 px-6 py-3 rounded-xl border border-gray-100 shadow-sm'>
+                        No courses available yet.
+                    </p>
                 ) : (
                     popularCourses.map((course) => (
                         <div
                             key={course._id}
-                            className='relative group'
+                            className='relative group transition-transform duration-300 hover:-translate-y-1'
                             style={{
-                                animation: `fadeSlideUp 0.5s ease forwards`,
-                                animationDelay: `${popularCourses.indexOf(course) * 0.1}s`,
+                                animation: `fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+                                animationDelay: `${popularCourses.indexOf(course) * 0.08}s`,
                                 opacity: 0
                             }}
                         >
-                            {/* hover glow behind card */}
-                            <div className='absolute inset-0 rounded-2xl bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] opacity-0 group-hover:opacity-25 blur-[18px] transition-all duration-500 pointer-events-none' />
+                            {/* Premium Soft Shadow Glow on Hover (Not too dark, very clean) */}
+                            <div className='absolute inset-0 rounded-2xl bg-gradient-to-tr from-[#4E5BF2] to-[#4AD8B4] opacity-0 group-hover:opacity-[0.08] blur-[20px] transition-all duration-500 pointer-events-none' />
+                            
                             <Card
                                 thumbnail={course.thumbnail || null}
                                 title={course.title}
@@ -194,12 +94,9 @@ function CardPage() {
                 )}
             </div>
 
-            {/* bottom fade */}
-            <div className='absolute bottom-0 left-0 w-full h-[60px] bg-gradient-to-t from-[#0F172A] to-transparent pointer-events-none' />
-
             <style>{`
                 @keyframes fadeSlideUp {
-                    from { opacity: 0; transform: translateY(30px); }
+                    from { opacity: 0; transform: translateY(24px); }
                     to   { opacity: 1; transform: translateY(0); }
                 }
             `}</style>

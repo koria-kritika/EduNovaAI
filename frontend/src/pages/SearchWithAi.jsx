@@ -61,7 +61,7 @@ function SearchWithAi() {
         
     }
   return (
-    <div className='min-h-screen bg-gradient-to-br from-black to-gray-900 text-white flex flex-col items-center px-4 py-16'>
+    <div className='min-h-screen bg-gradient-to-br from-pink-200 to-gray-900 text-white flex flex-col items-center px-4 py-16'>
     
 
     {/* search Container */}

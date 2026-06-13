@@ -138,7 +138,7 @@ function App() {
       socket.off("lecture_removed")
       socket.off("student_enrolled")
     }
-  }, []) // ← empty deps: register once, refs handle fresh state
+  }, [])
 
   if (loading) return (
     <div style={{

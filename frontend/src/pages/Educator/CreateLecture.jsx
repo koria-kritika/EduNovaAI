@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { FaArrowLeftLong } from "react-icons/fa6";
@@ -48,46 +47,41 @@ function CreateLecture() {
     return (
         <div style={{
             minHeight: '100vh',
-            background: 'linear-gradient(135deg, #0F172A 0%, #111827 100%)',
+            // Updated background: Light Purple to Peach/Green gradient
+            background: 'linear-gradient(135deg, #F3E8FF 0%, #E8F5E9 100%)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             padding: 24,
             fontFamily: "'Plus Jakarta Sans', sans-serif",
         }}>
             <style>{`
                 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-                .lec-input::placeholder { color: #475569; }
-                .lec-input:focus { border-color: rgba(139,92,246,0.5) !important; outline: none; }
-                .lec-row:hover { background: rgba(59,130,246,0.08) !important; border-color: rgba(59,130,246,0.25) !important; }
+                .lec-input::placeholder { color: #94A3B8; }
+                .lec-input:focus { border-color: #8B5CF6 !important; outline: none; }
+                .lec-row:hover { background: rgba(255,255,255,0.8) !important; border-color: #DDD !important; }
             `}</style>
-
-            {/* Ambient blobs */}
-            <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', top: '-10%', left: '-5%', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%)' }} />
-                <div style={{ position: 'absolute', bottom: '5%', right: '-5%', width: 350, height: 350, borderRadius: '50%', background: 'radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%)' }} />
-            </div>
 
             <div style={{
                 position: 'relative', zIndex: 1,
-                background: 'rgba(30,41,59,0.75)',
-                backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(59,130,246,0.15)',
-                borderRadius: 20, padding: '36px 32px',
-                width: '100%', maxWidth: 620,
-                boxShadow: '0 25px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)',
+                background: 'rgba(255, 255, 255, 0.85)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255,255,255,0.3)',
+                borderRadius: 24, padding: '48px 40px',
+                width: '100%', maxWidth: 800, // Card width badha di gayi hai
+                boxShadow: '0 20px 40px rgba(108, 92, 231, 0.1)',
             }}>
 
                 {/* Header */}
-                <div style={{ marginBottom: 28 }}>
+                <div style={{ marginBottom: 32 }}>
                     <h1 style={{
-                        fontSize: 22, fontWeight: 800, color: '#E2E8F0',
-                        margin: '0 0 6px', letterSpacing: '-0.3px',
+                        fontSize: 28, fontWeight: 800, color: '#0E1B4D', // Font bada aur bold
+                        margin: '0 0 10px',
                     }}>
                         Let's Add a Lecture
                     </h1>
-                    <p style={{ fontSize: 13, color: '#94A3B8', margin: 0, lineHeight: 1.6 }}>
+                    <p style={{ fontSize: 15, color: '#4B5563', margin: 0, lineHeight: 1.6 }}>
                         Enter the title and add your video lectures to enhance your course content.
                     </p>
-                    <div style={{ height: 3, width: 48, borderRadius: 99, background: 'linear-gradient(90deg, #3B82F6, #8B5CF6)', marginTop: 14 }} />
+                    <div style={{ height: 4, width: 60, borderRadius: 99, background: '#6C5CE7', marginTop: 16 }} />
                 </div>
 
                 {/* Input */}
@@ -98,106 +92,75 @@ function CreateLecture() {
                     value={lectureTitle}
                     onChange={e => setLectureTitle(e.target.value)}
                     style={{
-                        width: '100%', padding: '12px 16px',
-                        background: 'rgba(15,23,42,0.7)',
-                        border: '1px solid rgba(59,130,246,0.2)',
-                        borderRadius: 12, color: '#E2E8F0',
-                        fontSize: 14, fontFamily: 'inherit',
-                        marginBottom: 18, boxSizing: 'border-box',
-                        transition: 'border-color 0.2s',
+                        width: '100%', padding: '16px 20px',
+                        background: '#ffffff',
+                        border: '2px solid #E5E7EB',
+                        borderRadius: 14, color: '#1E293B',
+                        fontSize: 16, fontFamily: 'inherit',
+                        marginBottom: 20, boxSizing: 'border-box',
                     }}
                 />
 
                 {/* Buttons */}
-                <div style={{ display: 'flex', gap: 12, marginBottom: 28 }}>
+                <div style={{ display: 'flex', gap: 16, marginBottom: 32 }}>
                     <button
                         onClick={() => navigate(`/editcourse/${courseId}`)}
                         style={{
-                            display: 'inline-flex', alignItems: 'center', gap: 7,
-                            padding: '10px 18px', borderRadius: 10, cursor: 'pointer',
-                            background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.25)',
-                            color: '#3B82F6', fontSize: 13, fontWeight: 600,
-                            fontFamily: 'inherit', transition: 'all 0.2s',
+                            display: 'inline-flex', alignItems: 'center', gap: 8,
+                            padding: '12px 24px', borderRadius: 12, cursor: 'pointer',
+                            background: '#F1F5F9', border: '1px solid #E2E8F0',
+                            color: '#475569', fontSize: 14, fontWeight: 700,
                         }}
-                        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(59,130,246,0.2)'; e.currentTarget.style.boxShadow = '0 0 14px rgba(59,130,246,0.25)' }}
-                        onMouseLeave={e => { e.currentTarget.style.background = 'rgba(59,130,246,0.1)'; e.currentTarget.style.boxShadow = 'none' }}
                     >
-                        <FaArrowLeftLong style={{ fontSize: 13 }} /> Back to Course
+                        <FaArrowLeftLong /> Back to Course
                     </button>
 
                     <button
                         disabled={loading}
                         onClick={handleCreateLecture}
                         style={{
-                            display: 'inline-flex', alignItems: 'center', gap: 7,
-                            padding: '10px 22px', borderRadius: 10, cursor: loading ? 'not-allowed' : 'pointer',
-                            background: loading ? 'rgba(59,130,246,0.3)' : 'linear-gradient(135deg, #3B82F6, #8B5CF6)',
-                            border: 'none', color: 'white',
-                            fontSize: 13, fontWeight: 700, fontFamily: 'inherit',
-                            boxShadow: loading ? 'none' : '0 4px 16px rgba(59,130,246,0.4)',
-                            transition: 'all 0.2s',
+                            display: 'inline-flex', alignItems: 'center', gap: 8,
+                            padding: '12px 24px', borderRadius: 12, cursor: 'pointer',
+                            background: '#6C5CE7', border: 'none', color: 'white',
+                            fontSize: 14, fontWeight: 700,
                         }}
-                        onMouseEnter={e => { if (!loading) { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(59,130,246,0.55)' } }}
-                        onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(59,130,246,0.4)' }}
                     >
-                        {loading ? <ClipLoader size={18} color="white" /> : <><FaPlus style={{ fontSize: 12 }} /> Create Lecture</>}
+                        {loading ? <ClipLoader size={18} color="white" /> : <><FaPlus /> Create Lecture</>}
                     </button>
                 </div>
 
                 {/* Lecture List */}
                 {lectureData?.length > 0 && (
-                    <>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-                            <FaListUl style={{ color: '#8B5CF6', fontSize: 13 }} />
-                            <span style={{ fontSize: 13, fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                                Lectures ({lectureData.length}) <span style={{ fontSize: 12, color: '#FCD34D' }}>MAKE SURE TO UNLOCK THIS LECTURE IF IT IS FREE FOR VIEWERS</span>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                            <FaListUl style={{ color: '#6C5CE7' }} />
+                            <span style={{ fontSize: 14, fontWeight: 700, color: '#0E1B4D' }}>
+                                Lectures ({lectureData.length})
                             </span>
                         </div>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                            {lectureData?.map((lecture, index) => (
-                                <div
-                                    key={index}
-                                    className="lec-row"
+                        {lectureData?.map((lecture, index) => (
+                            <div key={index} className="lec-row" style={{
+                                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                                padding: '16px 20px', borderRadius: 12,
+                                background: 'white', border: '1px solid #E2E8F0',
+                            }}>
+                                <span style={{ fontSize: 15, fontWeight: 600, color: '#1E293B' }}>
+                                    {index + 1}. {lecture.lectureTitle}
+                                </span>
+                                <button
+                                    onClick={() => navigate(`/editlecture/${courseId}/${lecture._id}`)}
                                     style={{
-                                        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                                        padding: '12px 16px', borderRadius: 10,
-                                        background: 'rgba(15,23,42,0.5)',
-                                        border: '1px solid rgba(59,130,246,0.1)',
-                                        transition: 'all 0.2s',
+                                        background: '#F3E8FF', border: '1px solid #E9D5FF',
+                                        borderRadius: 8, padding: '8px 12px', cursor: 'pointer',
+                                        color: '#6C5CE7',
                                     }}
                                 >
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                        <span style={{
-                                            width: 26, height: 26, borderRadius: '50%', flexShrink: 0,
-                                            background: 'linear-gradient(135deg, #3B82F6, #8B5CF6)',
-                                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                            fontSize: 11, fontWeight: 800, color: 'white',
-                                        }}>
-                                            {index + 1}
-                                        </span>
-                                        <span style={{ fontSize: 13, fontWeight: 500, color: '#E2E8F0' }}>
-                                            {lecture.lectureTitle}
-                                        </span>
-                                    </div>
-
-                                    <button
-                                        onClick={() => navigate(`/editlecture/${courseId}/${lecture._id}`)}
-                                        style={{
-                                            background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.25)',
-                                            borderRadius: 7, padding: '5px 8px', cursor: 'pointer',
-                                            color: '#8B5CF6', fontSize: 13, display: 'flex', alignItems: 'center',
-                                            transition: 'all 0.2s',
-                                        }}
-                                        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(139,92,246,0.22)'; e.currentTarget.style.boxShadow = '0 0 10px rgba(139,92,246,0.3)' }}
-                                        onMouseLeave={e => { e.currentTarget.style.background = 'rgba(139,92,246,0.1)'; e.currentTarget.style.boxShadow = 'none' }}
-                                    >
-                                        <FaPenToSquare />
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    </>
+                                    <FaPenToSquare />
+                                </button>
+                            </div>
+                        ))}
+                    </div>
                 )}
             </div>
         </div>

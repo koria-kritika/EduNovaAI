@@ -1,104 +1,118 @@
-
 import React from 'react'
-import about from '../assets/about.jpg'
+import image from '../assets/image.png'
 import video from "../assets/video.mp4"
 import { TfiLayoutLineSolid } from "react-icons/tfi";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 
 function About() {
   return (
-    <div className='w-[100vw] lg:h-[70vh] min-h-[50vh] flex flex-wrap items-center justify-center gap-2 mb-[30px] bg-[#0F172A] relative overflow-hidden'>
+    <div 
+      className='w-full lg:min-h-[85vh] py-20 flex items-center justify-center relative overflow-hidden'
+      style={{
+        background: 'radial-gradient(circle at 80% 20%, #FFEBE0 0%, transparent 45%), radial-gradient(circle at 20% 80%, #E8F5E9 0%, transparent 40%), radial-gradient(circle at 50% 50%, #F3E8FF 0%, #FFFFFF 100%)',
+      }}
+    >
+      {/* Background Soft Organic Floating Element Orbs */}
+      <div className='absolute top-[-40px] right-[10%] w-[300px] h-[300px] bg-[#6C5CE7]/5 rounded-full blur-3xl pointer-events-none' />
+      <div className='absolute bottom-[-40px] left-[10%] w-[350px] h-[350px] bg-[#4AD8B4]/5 rounded-full blur-3xl pointer-events-none' />
 
-      {/* background glow effects */}
-      <div className='absolute top-[-80px] left-[-80px] w-[350px] h-[350px] bg-[#3B82F6] opacity-10 rounded-full blur-[120px] pointer-events-none' />
-      <div className='absolute bottom-[-80px] right-[-80px] w-[350px] h-[350px] bg-[#8B5CF6] opacity-10 rounded-full blur-[120px] pointer-events-none' />
-
-      {/* image side */}
-      <div className='lg:w-[40%] md:w-[80%] w-[100%] h-[100%] flex items-center justify-center relative'>
-        <div className='relative'>
-          {/* glow ring behind image */}
-          <div className='absolute inset-0 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] blur-[18px] opacity-30 scale-105' />
-          <img
-            src={about}
-            alt=""
-            className='w-[80%] h-[90%] rounded-lg relative z-10 border border-[#1E293B]'
-          />
-        </div>
-
-        <div className='max-w-[350px] mx-auto p-4 absolute top-[55%] left-[50%] z-20'>
-          <div className='relative'>
-            <div className='absolute inset-0 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] blur-[10px] opacity-40' />
-            <video
-              src={video}
-              className='w-full rounded-xl shadow-2xl border-2 border-[#3B82F6] relative z-10'
-              controls
-              autoPlay
-              loop
+      {/* Full-width Responsive Container */}
+      <div className='w-full max-w-[1400px] flex flex-col lg:flex-row items-center justify-between gap-12 px-6 md:px-12'>
+        
+        {/* ── Image & Media Content Side ── */}
+        <div className='w-full lg:w-[46%] flex items-center justify-center relative min-h-[420px] lg:min-h-0'>
+          <div className='relative w-[80%] max-w-[420px] aspect-[4/5] lg:mb-6'>
+            <div className='absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#4E5BF2] to-[#4AD8B4] blur-[24px] opacity-[0.14] scale-105' />
+            <img
+              src={image}
+              alt="About Us"
+              className='w-full h-full object-cover rounded-3xl relative z-10 border border-white/80 shadow-[0_20px_45px_rgba(14,27,77,0.08)]'
             />
           </div>
-        </div>
-      </div>
 
-      {/* info side */}
-      <div className='lg:w-[50%] md:w-[70%] w-[100%] h-[100%] flex items-start justify-center flex-col px-[35px] md:px-[80px]'>
-
-        {/* About Us label */}
-        <div className='flex text-[18px] items-center justify-center gap-[20px] text-[#06B6D4] font-medium tracking-widest uppercase'>
-          About Us
-          <TfiLayoutLineSolid className='w-[40px] h-[40px] text-[#3B82F6]' />
-        </div>
-
-        {/* heading */}
-        <div className='md:text-[45px] text-[35px] font-semibold leading-tight mt-2'>
-          <span className='text-[#E2E8F0]'>We Are </span>
-          <span className='bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent'>
-            Maximize Your
-          </span>
-          <span className='text-[#E2E8F0]'> Learning Growth</span>
-        </div>
-
-        {/* description */}
-        <div className='text-[15px] text-[#94A3B8] mt-3 leading-relaxed'>
-          We provide a modern Learning Management System to simplify online education, track progress, and enhance student-instructor collaboration efficiently.
-        </div>
-
-        {/* feature checks */}
-        <div className='w-[100%] lg:w-[70%] mt-[40px]'>
-          <div className='flex items-center justify-between'>
-            <div className='flex items-center gap-[10px] text-[#E2E8F0] group'>
-              <div className='w-8 h-8 rounded-full bg-[#1E293B] border border-[#3B82F6] flex items-center justify-center group-hover:bg-[#3B82F6] transition-all duration-300'>
-                <BsFillPatchCheckFill className='w-[14px] h-[14px] text-[#3B82F6] group-hover:text-white transition-all duration-300' />
-              </div>
-              <span className='text-sm font-medium'>Safe classrooms for discussions</span>
-            </div>
-            <div className='flex items-center gap-[10px] text-[#E2E8F0] group'>
-              <div className='w-8 h-8 rounded-full bg-[#1E293B] border border-[#8B5CF6] flex items-center justify-center group-hover:bg-[#8B5CF6] transition-all duration-300'>
-                <BsFillPatchCheckFill className='w-[14px] h-[14px] text-[#8B5CF6] group-hover:text-white transition-all duration-300' />
-              </div>
-              <span className='text-sm font-medium'>Expert Trainers</span>
-            </div>
-          </div>
-
-          <div className='flex items-center justify-between mt-[30px]'>
-            <div className='flex items-center gap-[10px] text-[#E2E8F0] group'>
-              <div className='w-8 h-8 rounded-full bg-[#1E293B] border border-[#06B6D4] flex items-center justify-center group-hover:bg-[#06B6D4] transition-all duration-300'>
-                <BsFillPatchCheckFill className='w-[14px] h-[14px] text-[#06B6D4] group-hover:text-white transition-all duration-300' />
-              </div>
-              <span className='text-sm font-medium'>Search content with AI Voice assistance</span>
-            </div>
-            <div className='flex items-center gap-[10px] text-[#E2E8F0] group'>
-              <div className='w-8 h-8 rounded-full bg-[#1E293B] border border-[#3B82F6] flex items-center justify-center group-hover:bg-[#3B82F6] transition-all duration-300'>
-                <BsFillPatchCheckFill className='w-[14px] h-[14px] text-[#3B82F6] group-hover:text-white transition-all duration-300' />
-              </div>
-              <span className='text-sm font-medium'>LifeTime Access</span>
+          {/* Floating Mini Video Frame */}
+          <div className='w-[260px] md:w-[320px] absolute bottom-[-10px] lg:bottom-10 md:right-[10%] right-[4%] z-20 transition-transform duration-300 hover:scale-102'>
+            <div className='relative'>
+              <div className='absolute inset-0 rounded-2xl bg-gradient-to-tr from-[#6C5CE7] to-[#FF8A8A] blur-[15px] opacity-[0.15]' />
+              <video
+                src={video}
+                className='w-full rounded-2xl shadow-[0_25px_50px_rgba(14,27,77,0.15)] border-[5px] border-white relative z-10'
+                controls
+                autoPlay
+                loop
+                muted
+              />
             </div>
           </div>
         </div>
 
-        {/* bottom accent line */}
-        <div className='mt-10 w-[120px] h-[3px] rounded-full bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4]' />
-      </div>
+        {/* ── Info Copywriting Content Side ── */}
+        <div className='w-full lg:w-[50%] flex items-start justify-center flex-col mt-8 lg:mt-0'>
 
+          {/* About Us Label */}
+          <div className='flex text-[15px] items-center justify-center gap-3 text-[#4E5BF2] font-black tracking-widest uppercase'>
+            About Us
+            <TfiLayoutLineSolid className='w-[40px] h-[2px] text-[#4AD8B4]' />
+          </div>
+
+          {/* Big Ultra-Bold Heading */}
+          <div className='md:text-[48px] text-[36px] font-black leading-tight mt-4 text-[#0E1B4D] tracking-tight'>
+            We Are{' '}
+            <span 
+              style={{
+                background: 'linear-gradient(90deg, #4E5BF2, #6C5CE7)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              Maximize Your
+            </span>
+            <br />Learning Growth
+          </div>
+
+          {/* Larger Description Copy */}
+          <div className='text-[16px] md:text-[17px] text-[#5F6C85] font-semibold mt-5 leading-relaxed max-w-[620px]'>
+            We provide a modern Learning Management System to simplify online education, track progress, and enhance student-instructor collaboration efficiently.
+          </div>
+
+          {/* Feature Checks Matrix Grid (Bigger Fonts) */}
+          <div className='w-full max-w-[650px] mt-10 grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-8'>
+            {[
+              { label: 'Safe classrooms for discussions', color: '#4E5BF2', bg: 'rgba(78, 91, 242, 0.08)' },
+              { label: 'Expert Trainers', color: '#6C5CE7', bg: 'rgba(108, 92, 231, 0.08)' },
+              { label: 'Search content with AI Voice', color: '#4AD8B4', bg: 'rgba(74, 216, 180, 0.08)' },
+              { label: 'LifeTime Access', color: '#FF8A8A', bg: 'rgba(255, 138, 138, 0.08)' }
+            ].map((item, index) => (
+              <div key={index} className='flex items-center gap-4 group cursor-default'>
+                <div 
+                  className='w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 shrink-0'
+                  style={{ backgroundColor: item.bg }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = item.color;
+                    e.currentTarget.querySelector('svg').style.color = '#ffffff';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = item.bg;
+                    e.currentTarget.querySelector('svg').style.color = item.color;
+                  }}
+                >
+                  <BsFillPatchCheckFill 
+                    className='w-[16px] h-[16px] transition-colors duration-300' 
+                    style={{ color: item.color }}
+                  />
+                </div>
+                <span className='text-[15px] md:text-[16px] font-bold text-[#0E1B4D]/90 transition-colors duration-200 group-hover:text-[#4E5BF2]'>
+                  {item.label}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Shaded Accent Divider Line */}
+          <div className='mt-12 w-[110px] h-[4px] rounded-full bg-gradient-to-r from-[#4E5BF2] via-[#FF8A8A] to-[#4AD8B4]' />
+        </div>
+
+      </div>
     </div>
   )
 }

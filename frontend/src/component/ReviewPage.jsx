@@ -3,81 +3,101 @@ import { useSelector } from 'react-redux'
 import ReviewCard from './ReviewCard'
 
 function ReviewPage() {
-   const {reviewData} = useSelector(state=>state.review)
-   const [latestReview,setLatestReview] = useState(null)
+   const { reviewData } = useSelector(state => state.review)
+   const [latestReview, setLatestReview] = useState([])
 
-
-  useEffect(()=>{
-   setLatestReview(
-      reviewData?.filter((review) => review?.course && review?.user)?.slice(0,6)
-   )
-},[reviewData])
+   useEffect(() => {
+     if (Array.isArray(reviewData)) {
+       setLatestReview(
+          reviewData?.filter((review) => review?.course && review?.user)?.slice(0, 6)
+       )
+     }
+   }, [reviewData])
 
   return (
-    <div className='flex items-center justify-center flex-col bg-[#0F172A] relative overflow-hidden'>
+    <div 
+      className='flex items-center justify-center flex-col relative overflow-hidden w-full'
+      style={{
+        /* Bright Fluid Mesh Background mixing Mint Green, Purple, and Soft Peach exactly like your reference image */
+        background: 'radial-gradient(circle at 15% 15%, #E8F5E9 0%, transparent 40%), radial-gradient(circle at 85% 85%, #FFEBE0 0%, transparent 40%), radial-gradient(circle at 50% 50%, #F3E8FF 0%, #FFFFFF 100%)',
+      }}
+    >
+      {/* Background Soft Organic Floating Elements */}
+      <div className='absolute top-[20%] right-[5%] w-[150px] h-[150px] bg-gradient-to-tr from-[#6C5CE7]/10 to-[#4E5BF2]/10 rounded-full blur-2xl pointer-events-none' />
+      <div className='absolute bottom-[20%] left-[2%] w-[130px] h-[130px] bg-gradient-to-tr from-[#4AD8B4]/10 to-[#E8F5E9]/15 rounded-full blur-xl pointer-events-none' />
 
-      {/* background glow orbs */}
-      <div className='absolute top-[0px] left-[10%] w-[400px] h-[400px] bg-[#3B82F6] opacity-[0.07] rounded-full blur-[130px] pointer-events-none' />
-      <div className='absolute bottom-[0px] right-[10%] w-[400px] h-[400px] bg-[#8B5CF6] opacity-[0.07] rounded-full blur-[130px] pointer-events-none' />
-      <div className='absolute top-[50%] left-[50%] w-[300px] h-[300px] bg-[#06B6D4] opacity-[0.05] rounded-full blur-[100px] pointer-events-none' />
-
-      {/* section label */}
-      <div className='flex items-center gap-3 mt-[50px]'>
-        <div className='w-8 h-[2px] bg-gradient-to-r from-transparent to-[#3B82F6]' />
-        <span className='text-[#06B6D4] text-sm font-semibold tracking-widest uppercase'>
+      {/* Section Label */}
+      <div className='flex items-center gap-3 mt-[70px]'>
+        <div className='w-8 h-[2px] bg-gradient-to-r from-transparent to-[#4E5BF2]' />
+        <span className='text-[#4E5BF2] text-xs font-bold tracking-widest uppercase'>
           Student Reviews
         </span>
-        <div className='w-8 h-[2px] bg-gradient-to-l from-transparent to-[#8B5CF6]' />
+        <div className='w-8 h-[2px] bg-gradient-to-l from-transparent to-[#4AD8B4]' />
       </div>
 
-      {/* heading */}
-      <h1 className='md:text-[45px] text-[30px] font-semibold text-center mt-[16px] px-[20px] leading-tight'>
-        <span className='text-[#E2E8F0]'>Real Reviews for </span>
-        <span className='bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent'>
+      {/* Heading with Clean Premium Contrast */}
+      <h1 className='md:text-[42px] text-[32px] font-extrabold text-center mt-[12px] px-[20px] leading-tight text-[#0E1B4D]'>
+        Real Reviews for{' '}
+        <span 
+          style={{
+            background: 'linear-gradient(90deg, #4E5BF2, #6C5CE7)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+        >
           Real Courses
         </span>
       </h1>
 
-      {/* subtext */}
-      <span className='lg:w-[50%] md:w-[80%] text-[15px] text-center mt-[20px] mb-[40px] px-[20px] text-[#94A3B8] leading-relaxed'>
-        Discover how our Virtual Courses is transforming learning experiences through real feedback from students and professionals worldwide.
-      </span>
+      {/* Subtext */}
+      <p className='lg:w-[50%] md:w-[75%] text-[15px] text-center mt-[16px] mb-[24px] px-[20px] text-[#5F6C85] font-medium leading-relaxed'>
+        Discover how our Virtual Courses are transforming learning experiences through real feedback from students and professionals worldwide.
+      </p>
 
-      {/* divider */}
-      <div className='w-[80px] h-[3px] rounded-full bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] mb-[50px]' />
+      {/* Pastel Soft Gradient Divider */}
+      <div 
+        className='w-[80px] h-[3.5px] rounded-full mb-[50px]' 
+        style={{
+          background: 'linear-gradient(90deg, #4E5BF2, #FF8A8A, #4AD8B4)'
+        }}
+      />
 
-      {/* review cards */}
-      <div className='w-[100%] min-h-[100vh] flex items-center justify-center flex-wrap gap-[30px] lg:px-[80px] md:px-[40px] px-[20px] pb-[80px]'>
-        {latestReview?.map((review, index) => (
-          <div
-            key={index}
-            className='relative group'
-            style={{
-              animation: `fadeSlideUp 0.5s ease forwards`,
-              animationDelay: `${index * 0.1}s`,
-              opacity: 0
-            }}
-          >
-            {/* card glow on hover */}
-            <div className='absolute inset-0 rounded-2xl bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] opacity-0 group-hover:opacity-20 blur-[15px] transition-all duration-500 pointer-events-none' />
-            <ReviewCard
-              comment={review.comment}
-              rating={review.rating}
-              photoUrl={review.user.photoUrl}
-              courseTitle={review.course.title}
-              description={review.user.description}
-              name={review.user.name}
-            />
-          </div>
-        ))}
+      {/* Review Cards Grid Wrapper */}
+      <div className='w-[100%] min-h-[60vh] flex items-center justify-center flex-wrap gap-[35px] lg:px-[80px] md:px-[40px] px-[20px] pb-[90px]'>
+        {!latestReview || latestReview.length === 0 ? (
+          <p className='text-[#5F6C85] font-medium text-sm bg-white/50 px-6 py-3 rounded-xl border border-gray-100 shadow-sm'>
+            No reviews available yet.
+          </p>
+        ) : (
+          latestReview.map((review, index) => (
+            <div
+              key={review._id || index}
+              className='relative group transition-transform duration-300 hover:-translate-y-1'
+              style={{
+                animation: `fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+                animationDelay: `${index * 0.08}s`,
+                opacity: 0
+              }}
+            >
+              {/* Soft Subtle Translucent Hover Glow leaking from behind */}
+              <div className='absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#4E5BF2] to-[#4AD8B4] opacity-0 group-hover:opacity-[0.06] blur-[20px] transition-all duration-500 pointer-events-none' />
+              
+              <ReviewCard
+                comment={review.comment}
+                rating={review.rating}
+                photoUrl={review.user?.photoUrl}
+                courseTitle={review.course?.title}
+                description={review.user?.description}
+                name={review.user?.name}
+              />
+            </div>
+          ))
+        )}
       </div>
-
-      {/* bottom fade */}
-      <div className='absolute bottom-0 left-0 w-full h-[60px] bg-gradient-to-t from-[#0F172A] to-transparent pointer-events-none' />
 
       <style>{`
         @keyframes fadeSlideUp {
-          from { opacity: 0; transform: translateY(30px); }
+          from { opacity: 0; transform: translateY(24px); }
           to   { opacity: 1; transform: translateY(0); }
         }
       `}</style>

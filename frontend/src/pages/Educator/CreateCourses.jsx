@@ -1,5 +1,3 @@
-
-
 import axios from 'axios';
 import React, { useState } from 'react'
 import { FaArrowLeftLong } from "react-icons/fa6";
@@ -15,133 +13,130 @@ function CreateCourses() {
   const [loading, setLoading] = useState(false)
 
   const handleCreateCourse = async () => {
+    if (!title.trim() || !category) {
+      toast.error("Please fill in all details");
+      return;
+    }
     setLoading(true)
     try {
       const result = await axios.post(serverUrl + "/api/course/create", { title, category }, { withCredentials: true })
       console.log(result.data)
       navigate("/courses")
       setLoading(false)
-      toast.success("Course Created")
+      toast.success("Course Created Successfully")
     } catch (error) {
       console.log(error)
       setLoading(false)
-      toast.error(error.response.data.message)
+      toast.error(error.response?.data?.message || "Something went wrong")
     }
   }
 
   return (
     <div
-      className='min-h-screen flex items-center justify-center px-4 py-10 relative overflow-hidden'
-      style={{ background: '#0F172A' }}
+      className='min-h-screen flex items-center justify-center px-4 py-12 relative overflow-hidden w-full'
+      style={{ 
+        /* Premium Premium Bright Aura Gradient background matching your dashboards */
+        background: 'radial-gradient(circle at 85% 15%, #FFEBE0 0%, transparent 45%), radial-gradient(circle at 15% 85%, #E8F5E9 0%, transparent 45%), radial-gradient(circle at 50% 50%, #F3E8FF 0%, #FFFFFF 100%)' 
+      }}
     >
-      {/* glow orbs */}
-      <div className='fixed top-[-80px] right-[10%] w-[400px] h-[400px] bg-[#8B5CF6] opacity-[0.08] rounded-full blur-[140px] pointer-events-none' />
-      <div className='fixed bottom-[-80px] left-[5%] w-[400px] h-[400px] bg-[#3B82F6] opacity-[0.08] rounded-full blur-[140px] pointer-events-none' />
+      {/* Soft Decorative Fluid Orbs */}
+      <div className='fixed top-[-60px] right-[12%] w-[380px] h-[380px] bg-[#6C5CE7]/5 rounded-full blur-3xl pointer-events-none' />
+      <div className='fixed bottom-[-60px] left-[6%] w-[380px] h-[380px] bg-[#4AD8B4]/5 rounded-full blur-3xl pointer-events-none' />
 
       <div
-        className='max-w-xl w-full mx-auto p-8 rounded-2xl relative z-10'
+        className='max-w-2xl w-full mx-auto p-8 md:p-10 rounded-2xl relative z-10 transition-all duration-300'
         style={{
-          background: '#111827',
-          border: '1px solid rgba(59,130,246,0.2)',
-          boxShadow: '0 4px 40px rgba(0,0,0,0.5)',
+          background: 'rgba(255, 255, 255, 0.75)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(78, 91, 242, 0.15)',
+          boxShadow: '0 20px 50px rgba(14, 27, 77, 0.05)',
         }}
       >
-        {/* back button */}
+        {/* Absolute Back Navigation Arrow */}
         <button
-          className='absolute top-6 left-6 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300'
+          className='absolute top-7 left-7 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm'
           style={{
-            background: 'rgba(59,130,246,0.1)',
-            border: '1px solid rgba(59,130,246,0.3)',
+            background: 'rgba(78, 91, 242, 0.06)',
+            border: '1px solid rgba(78, 91, 242, 0.15)',
           }}
-          onMouseEnter={e => e.currentTarget.style.background = 'rgba(59,130,246,0.25)'}
-          onMouseLeave={e => e.currentTarget.style.background = 'rgba(59,130,246,0.1)'}
+          onMouseEnter={e => e.currentTarget.style.background = 'rgba(78, 91, 242, 0.14)'}
+          onMouseLeave={e => e.currentTarget.style.background = 'rgba(78, 91, 242, 0.06)'}
           onClick={() => navigate("/courses")}
         >
-          <FaArrowLeftLong className='text-[#3B82F6] w-3.5 h-3.5' />
+          <FaArrowLeftLong className='text-[#4E5BF2] w-4 h-4' />
         </button>
 
-        {/* header */}
-        <div className='text-center mb-8 pt-2'>
-          <div className='flex items-center justify-center gap-2 mb-2'>
-            <div className='w-8 h-[2px] bg-gradient-to-r from-transparent to-[#3B82F6]' />
-            <span className='text-[#06B6D4] text-sm font-semibold tracking-widest uppercase'>
-              Educator Panel
+        {/* Card Header Structure with Upscaled Typography */}
+        <div className='text-center mb-8 pt-4'>
+          <div className='flex items-center justify-center gap-3 mb-2'>
+            <div className='w-10 h-[2px] bg-gradient-to-r from-transparent to-[#4E5BF2]' />
+            <span className='text-[#6C5CE7] text-sm font-black tracking-widest uppercase'>
+              Educator Studio
             </span>
-            <div className='w-8 h-[2px] bg-gradient-to-l from-transparent to-[#8B5CF6]' />
+            <div className='w-10 h-[2px] bg-gradient-to-l from-transparent to-[#6C5CE7]' />
           </div>
-          <h2
-            className='text-3xl font-bold'
-            style={{
-              background: 'linear-gradient(90deg, #E2E8F0, #3B82F6, #8B5CF6)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
+          <h2 className='text-3xl md:text-[35px] font-black tracking-tight text-[#0E1B4D]'>
             Create New Course
           </h2>
-          <p className='text-[#94A3B8] text-base mt-2'>
-            Fill in the details to launch your course
+          <p className='text-[#5F6C85] text-[16px] font-semibold mt-2'>
+            Fill in the essential data fields to draft your structural curriculum.
           </p>
         </div>
 
-        {/* divider */}
+        {/* Elegant Minimal Divider Line */}
         <div
-          className='w-full h-[1px] mb-7'
-          style={{ background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.3), transparent)' }}
+          className='w-full h-[1px] mb-8'
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(78, 91, 242, 0.2), transparent)' }}
         />
 
         <form className='space-y-6' onSubmit={(e) => e.preventDefault()}>
 
-          {/* Title */}
+          {/* Upscaled Input Block: Title */}
           <div>
             <label
               htmlFor="title"
-              className='block text-base font-semibold mb-2'
-              style={{ color: '#E2E8F0' }}
+              className='block text-[17px] font-black mb-2.5 text-[#0E1B4D]'
             >
-              Course Title
+              Course Core Title
             </label>
             <input
               type="text"
               id='title'
-              placeholder='e.g. Complete Web Development Bootcamp'
-              className='w-full rounded-xl px-4 py-3 text-base outline-none transition-all duration-200'
+              placeholder='e.g. Masterclass in Web Architectures & Development'
+              className='w-full rounded-xl px-5 py-4 text-[16px] font-bold outline-none transition-all duration-200 border bg-white'
               style={{
-                background: '#0F172A',
-                border: '1px solid rgba(59,130,246,0.2)',
-                color: '#E2E8F0',
+                borderColor: 'rgba(78, 91, 242, 0.2)',
+                color: '#0E1B4D',
               }}
-              onFocus={e => e.currentTarget.style.border = '1px solid #3B82F6'}
-              onBlur={e => e.currentTarget.style.border = '1px solid rgba(59,130,246,0.2)'}
+              onFocus={e => { e.currentTarget.style.borderColor = '#4E5BF2'; e.currentTarget.style.boxShadow = '0 0 0 4px rgba(78, 91, 242, 0.08)' }}
+              onBlur={e => { e.currentTarget.style.borderColor = 'rgba(78, 91, 242, 0.2)'; e.currentTarget.style.boxShadow = 'none' }}
               onChange={(e) => setTitle(e.target.value)}
               value={title}
             />
           </div>
 
-          {/* Category */}
+          {/* Upscaled Input Block: Category */}
           <div>
             <label
               htmlFor="cat"
-              className='block text-base font-semibold mb-2'
-              style={{ color: '#E2E8F0' }}
+              className='block text-[17px] font-black mb-2.5 text-[#0E1B4D]'
             >
-              Course Category
+              Curriculum Category
             </label>
             <select
               id="cat"
-              className='w-full rounded-xl px-4 py-3 text-base outline-none transition-all duration-200 cursor-pointer'
+              className='w-full rounded-xl px-5 py-4 text-[16px] font-bold outline-none transition-all duration-200 cursor-pointer border bg-white'
               style={{
-                background: '#0F172A',
-                border: '1px solid rgba(59,130,246,0.2)',
-                color: category ? '#E2E8F0' : '#94A3B8',
+                borderColor: 'rgba(78, 91, 242, 0.2)',
+                color: category ? '#0E1B4D' : '#7C8BA1',
               }}
-              onFocus={e => e.currentTarget.style.border = '1px solid #3B82F6'}
-              onBlur={e => e.currentTarget.style.border = '1px solid rgba(59,130,246,0.2)'}
+              onFocus={e => { e.currentTarget.style.borderColor = '#4E5BF2'; e.currentTarget.style.boxShadow = '0 0 0 4px rgba(78, 91, 242, 0.08)' }}
+              onBlur={e => { e.currentTarget.style.borderColor = 'rgba(78, 91, 242, 0.2)'; e.currentTarget.style.boxShadow = 'none' }}
               onChange={(e) => setCategory(e.target.value)}
+              value={category}
             >
-              <option value="" style={{ background: '#111827', color: '#94A3B8' }}>
-                Select Category
+              <option value="" disabled style={{ color: '#7C8BA1' }}>
+                Select Domain Category
               </option>
               {[
                 'App Development', 'AI/ML', 'AI Tools', 'Data Science',
@@ -151,7 +146,7 @@ function CreateCourses() {
                 <option
                   key={cat}
                   value={cat}
-                  style={{ background: '#111827', color: '#E2E8F0' }}
+                  style={{ color: '#0E1B4D', fontWeight: '600' }}
                 >
                   {cat}
                 </option>
@@ -159,59 +154,59 @@ function CreateCourses() {
             </select>
           </div>
 
-          {/* preview pills */}
+          {/* Clean Realtime Preview Meta Pills (Slightly larger text) */}
           {(title || category) && (
             <div
-              className='flex flex-wrap gap-2 p-3 rounded-xl'
+              className='flex flex-wrap gap-2.5 p-4 rounded-xl transition-all duration-300'
               style={{
-                background: 'rgba(59,130,246,0.05)',
-                border: '1px solid rgba(59,130,246,0.1)',
+                background: 'rgba(78, 91, 242, 0.03)',
+                border: '1px solid rgba(78, 91, 242, 0.08)',
               }}
             >
               {title && (
                 <span
-                  className='text-sm px-3 py-1 rounded-full font-medium'
+                  className='text-[14px] px-3.5 py-1.5 rounded-full font-black tracking-wide inline-flex items-center'
                   style={{
-                    background: 'rgba(59,130,246,0.12)',
-                    border: '1px solid rgba(59,130,246,0.25)',
-                    color: '#3B82F6',
+                    background: 'rgba(78, 91, 242, 0.08)',
+                    border: '1px solid rgba(78, 91, 242, 0.2)',
+                    color: '#4E5BF2',
                   }}
                 >
-                  📘 {title.slice(0, 30)}{title.length > 30 ? '...' : ''}
+                  {title.slice(0, 35)}{title.length > 35 ? '...' : ''}
                 </span>
               )}
               {category && (
                 <span
-                  className='text-sm px-3 py-1 rounded-full font-medium'
+                  className='text-[14px] px-3.5 py-1.5 rounded-full font-black tracking-wide inline-flex items-center'
                   style={{
-                    background: 'rgba(139,92,246,0.12)',
-                    border: '1px solid rgba(139,92,246,0.25)',
-                    color: '#8B5CF6',
+                    background: 'rgba(108, 92, 231, 0.08)',
+                    border: '1px solid rgba(108, 92, 231, 0.2)',
+                    color: '#6C5CE7',
                   }}
                 >
-                  🏷️ {category}
+                {category}
                 </span>
               )}
             </div>
           )}
 
-          {/* submit button */}
+          {/* Primary Submit Action Trigger */}
           <button
-            className='w-full py-3 rounded-xl text-base font-bold flex items-center justify-center transition-all duration-300 disabled:opacity-50'
+            className='w-full py-4 rounded-xl text-[16px] font-black flex items-center justify-center transition-all duration-300 disabled:opacity-50 hover:scale-[1.01]'
             style={{
-              background: 'linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%)',
+              background: 'linear-gradient(135deg, #4E5BF2 0%, #6C5CE7 100%)',
               color: '#fff',
-              boxShadow: '0 0 20px rgba(59,130,246,0.4)',
-              letterSpacing: '0.03em',
+              boxShadow: '0 6px 20px rgba(78, 91, 242, 0.2)',
+              letterSpacing: '0.02em',
             }}
             onMouseEnter={e => {
-              if (!loading) e.currentTarget.style.boxShadow = '0 0 30px rgba(139,92,246,0.6)'
+              if (!loading) e.currentTarget.style.boxShadow = '0 8px 25px rgba(108, 92, 231, 0.35)'
             }}
-            onMouseLeave={e => e.currentTarget.style.boxShadow = '0 0 20px rgba(59,130,246,0.4)'}
+            onMouseLeave={e => e.currentTarget.style.boxShadow = '0 6px 20px rgba(78, 91, 242, 0.2)'}
             disabled={loading}
             onClick={handleCreateCourse}
           >
-            {loading ? <ClipLoader size={22} color='white' /> : ' Create Course'}
+            {loading ? <ClipLoader size={24} color='white' /> : 'Create Course Blueprint'}
           </button>
 
         </form>
