@@ -226,7 +226,7 @@ function ViewCourse() {
                                 style={{ marginTop: '8px', padding: '14px 28px', background: 'linear-gradient(135deg, #7C3AED 0%, #10B981 100%)', border: 'none', borderRadius: '12px', cursor: 'pointer', color: 'white', fontWeight: '700', fontSize: '16px', width: 'fit-content', boxShadow: '0 4px 20px rgba(124,58,237,0.3)', transition: 'all 0.3s ease' }}
                                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 30px rgba(124,58,237,0.45)' }}
                                 onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(124,58,237,0.3)' }}>
-                                ⚡ Enroll Now
+                                 Enroll Now
                             </button>
                         ) : (
                             <button onClick={() => navigate(`/viewlecture/${courseId}`)}
