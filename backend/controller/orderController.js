@@ -19,7 +19,7 @@ export const RazorpayOrder = async (req, res) => {
             return res.status(404).json({ message: "Course is not found" })
         }
 
-        // ✅ If course is free (price 0), enroll directly without payment
+        
         if (!course.price || course.price === 0) {
             const user = await User.findById(userId)
             if (!user.enrolledCourses.includes(courseId)) {
@@ -62,7 +62,7 @@ export const verifyPayment = async (req, res) => {
             razorpay_signature
         } = req.body
 
-        // ✅ Verify signature using HMAC-SHA256 — the correct & secure way
+        
         const body = razorpay_order_id + '|' + razorpay_payment_id
         const expectedSignature = crypto
             .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
@@ -73,7 +73,7 @@ export const verifyPayment = async (req, res) => {
             return res.status(400).json({ message: "Payment could not be completed. Invalid signature." })
         }
 
-        // Signature valid — enroll the student
+        
         const user = await User.findById(userId)
         if (!user.enrolledCourses.includes(courseId)) {
             user.enrolledCourses.push(courseId)
